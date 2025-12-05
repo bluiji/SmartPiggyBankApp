@@ -1,73 +1,177 @@
-# Smart Piggy Bank App
+Smart Piggy Bank App 🐷💰
 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [OOP Concepts Applied](#oop-concepts-applied)
-- [Program Structure](#program-structure)
-- [How to Run](#how-to-run)
-- [Features](#features)
-- [Sample Output](#sample-output)
-- [Authors](#authors)
-- [Acknowledgement](#acknowledgement)
+A robust, console-based personal finance tracker written in Java. This application helps users manage a weekly allowance, track daily spending habits, store extra cash, and save towards specific financial goals (Events) using smart budgeting algorithms.
 
-## Project Overview
-A Java-based console application designed to help users manage their weekly budget, track daily expenses, and save for future goals or events. The app provides structured budget allocation, spending monitoring, and goal planning with different spending modes and customizable weekly reset days. Data persistence is achieved through text file storage.
+🚀 Features
 
-## OOP Concepts Applied
+Smart Budgeting Modes: Choose between Conservative, Balanced, or Relaxed modes to automatically calculate your recommended daily spending limit based on your weekly allowance.
 
-### Abstraction
-The `FinancialItem` abstract class defines a common interface for `Transaction` and `Event` classes, exposing essential methods like `getType()` and `getDisplayInfo()` while hiding implementation details.
+Transaction Tracking: Log expenses and income with date stamping.
 
-### Inheritance
-`Transaction` and `Event` classes extend `FinancialItem`, inheriting common attributes (name, amount, date) while adding specific properties and methods.
+Goal/Event Planning: Set up financial goals (e.g., "Concert Ticket"), track funding progress, and get daily saving recommendations.
 
-### Encapsulation
-All class fields are private/protected with public getter methods. The `Event` class encapsulates funding logic with methods like `addFunds()` and `getRemaining()`.
+Data Persistence: Automatically saves your progress to a local file (data.txt) so you never lose your financial data.
 
-### Polymorphism
-Both `Transaction` and `Event` override abstract methods to provide type-specific behavior, allowing polymorphic handling through `FinancialItem` references.
+Automatic Weekly Reset: Detects when a new week begins (based on your preferred reset day) and resets budgets while keeping stored savings intact.
 
-## Program Structure
+Simulations: Simulate how different spending habits affect your ability to reach future goals.
 
-**Main Class**: `SmartPiggyBankApp_copy`
+📋 Prerequisites
 
-### Components:
-- **Scanner sc (static)**: Handles user input
-- **Transaction class (static nested)**: 
-  - Attributes: `name`, `amount`, `expense`, `date`
-- **Event class (static nested)**:
-  - Attributes: `name`, `needed`, `funded`, `eventDate`
-- **Static Variables**:
-  - `weeklyAllowance`, `weeklySpent`, `storedMoney`
-  - `List<Transaction> tx`, `List<Event> events`
-  - `Mode mode`, `DayOfWeek resetDay`, `LocalDate lastReset`
+Java Development Kit (JDK): Version 8 or higher (required for java.time and Stream API).
 
-### Key Methods:
-- Program flow: `main()`, `settingsMenu()`, `eventsMenu()`
-- Budget calculations: `dailyBudget()`, `weeklyRemaining()`
-- Data management: `saveData()`, `loadData()`
-- UI helpers: `printCentered()`, `header()`, `subHeader()`
-- Input helpers: `readInt()`, `readDouble()`
+🛠️ Compilation & Execution
 
-## How to Run
-1. Ensure Java Development Kit (JDK) 8+ is installed
-2. Copy the program content into a Java compiler/IDE
-3. Compile and run the `SmartPiggyBankApp_copy` class
+Save the code: Save the provided Java code into a file named SmartPiggyBankApp.java.
 
-## Features
-- **Financial Management**: Weekly allowance tracking and allocation
-- **Transaction System**: Income/expense recording with categorization
-- **Goals/Events System**: Targeted savings for specific dates
-- **Budgeting Modes**: Conservative, Balanced, or Relaxed spending styles
-- **Weekly Management**: Customizable reset day selection
+Compile:
+
+javac SmartPiggyBankApp.java
 
 
-- **Data Persistence**: Automatic text file storage
-- **Saving Simulation**: Goal planning with daily recommendations
-- **Menu Navigation**: Hierarchical interface system
+Run:
 
-## Authors
-- **Ebora, Justin**
-- **Pilapial, Florence**
-- **Marasigan, Arvin**
-- **Rocio, Neil**
+java SmartPiggyBankApp
+
+
+🖥️ Usage & Sample Outputs
+
+Below are examples of what the application looks like during execution.
+
+1. First Run (Setup)
+
+When running the app for the first time, it asks for your baseline configuration.
+
+==================================================
+           WELCOME TO SMART PIGGY BANK
+==================================================
+              --- Set Weekly Allowance ---
+Enter weekly allowance: 2000
+                     Saved.
+              --- Select Spending Mode ---
+               1. Conservative
+               2. Balanced
+               3. Relaxed
+Choose: 2
+             Mode set to: BALANCED
+              --- Weekly Reset Day ---
+               1. Sunday
+               2. Monday
+...
+Choose: 2
+           Reset day set to: MONDAY
+
+
+2. Main Dashboard
+
+The main screen updates dynamically based on your spending.
+
+==================================================
+                 SMART PIGGY BANK
+==================================================
+             Weekly Allowance : 2000.00
+             Reserved Events  : 0.00
+             Stored Money     : 0.00
+             Weekly Remaining : 2000.00
+--------------------------------------------------
+             Daily Budget     : 285.71
+             Today's Spent    : 0.00
+             Remaining Today  : 285.71
+--------------------------------------------------
+1. Add Transaction
+2. View Transactions
+3. Events / Goals
+4. Store Extra Money
+5. Weekly Summary
+6. Settings
+0. Exit
+Choose: 
+
+
+3. Adding a Transaction
+
+Adding an expense updates your daily and weekly remaining totals immediately.
+
+              --- Add Transaction ---
+Name: Lunch
+Amount: 150
+1 = Expense, 2 = Income: 1
+      Transaction saved. Remaining today: 135.71
+
+
+4. Event/Goal Tracking
+
+Setting a goal calculates how much you need to save per day to reach it by the deadline.
+
+              --- Add Event / Goal ---
+Event name: Concert Tickets
+Amount needed: 5000
+Event date (YYYY-MM-DD): 2024-12-25
+                  Event saved.
+
+
+If you view the event later:
+
+==================================================
+                      EVENTS
+==================================================
+              1. Concert Tickets
+   Target: 5000.00 | Funded: 500.00 | Remaining: 4500.00
+   Days Left: 30 | Daily Recommendation: 150.00
+
+
+💾 Data Persistence (data.txt)
+
+The application creates a file named data.txt in the same directory. This file stores your settings, transactions, and event progress.
+
+Structure Explanation
+
+Header: Settings (Allowance, Spent, Stored, Mode, Reset Day, Last Reset Date).
+
+Transactions: Delimited by ===TRANSACTIONS===.
+
+Events: Delimited by ===EVENTS===.
+
+Sample data.txt Snippet
+
+2000.0
+150.0
+0.0
+BALANCED
+MONDAY
+2023-10-27
+===TRANSACTIONS===
+Lunch|150.0|true|2023-10-27
+Freelance Work|500.0|false|2023-10-26
+===EVENTS===
+Concert Tickets|5000.0|2024-12-25|500.0
+New Laptop|45000.0|2025-01-15|1200.0
+
+
+⚙️ Budgeting Logic
+
+The Daily Budget is calculated based on your Weekly Allowance and your selected Mode:
+
+Mode
+
+Formula
+
+Description
+
+Conservative
+
+Allowance / 10
+
+Extremely safe. Saves a large portion of allowance automatically.
+
+Balanced
+
+Allowance / 7
+
+Standard logic. Distributes money evenly across the week.
+
+Relaxed
+
+Allowance / 5
+
+High daily cap. Assumes you won't spend money on weekends.
