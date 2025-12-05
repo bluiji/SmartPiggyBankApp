@@ -235,7 +235,7 @@ A `data.txt` file is automatically created.
     <td>Developer</td>
 </tr>
 <tr>
-    <td><img src="static/test.jpg" width="100" height="100"> </td>
+    <td><img src="static/florence.jpg" width="100" height="100"> </td>
     <td><strong>Pilapil, Florence</strong> <br/>
         </a>
     </td>
