@@ -5,9 +5,21 @@ application helps users manage a weekly allowance, track daily spending,
 store extra cash, and save towards specific financial goals using smart
 budgeting algorithms.
 
+# IT 2112
+
+Ebora, Justin 
+
+Marasigan, Arvin
+
+Pilapil, Florence
+
+Rocio, Neil
+
 ------------------------------------------------------------------------
-## Project Overview
-A Java-based console application designed to help users manage their weekly budget, track daily expenses, and save for future goals or events. The app provides structured budget allocation, spending monitoring, and goal planning with different spending modes and customizable weekly reset days. Data persistence is achieved through text file storage.
+
+# Project Overview
+
+The Smart Piggy Bank App is a Java-based console application designed to help users manage their weekly budget, track daily expenses, and save for future goals or events. Also, it provides a structured way to allocate a weekly allowance, monitor spending against a daily budget, and plan savings for specific goals. The app supports different spending modes (Conservative, Balanced, Relaxed) and allows users to set a custom weekly reset day. The data inserted by the user is saved with the use of a text file, making it an appropriate tool for personal finance management. Moreover, this program solves the problem of personal budget mismanagement by providing a simple, structured way for users to track their weekly spending.
 
 ------------------------------------------------------------------------
 
@@ -29,25 +41,41 @@ Both `Transaction` and `Event` override abstract methods to provide type-specifi
 
 ## Program Structure
 
-**Main Class**: `SmartPiggyBankApp_copy`
+## SmartPiggyBankApp (Main Class)
 
-### Components:
-- **Scanner sc (static)**: Handles user input
-- **Transaction class (static nested)**: 
-  - Attributes: `name`, `amount`, `expense`, `date`
-- **Event class (static nested)**:
-  - Attributes: `name`, `needed`, `funded`, `eventDate`
-- **Static Variables**:
-  - `weeklyAllowance`, `weeklySpent`, `storedMoney`
-  - `List<Transaction> tx`, `List<Event> events`
-  - `Mode mode`, `DayOfWeek resetDay`, `LocalDate lastReset`
+```text
+SmartPiggyBankApp (Main Class)
+├── Scanner sc (static) - Handles user input
+├── Transaction (static nested class)
+│   ├── String name
+│   ├── double amount
+│   ├── boolean expense
+│   └── LocalDate date
+│
+├── Event (static nested class)
+│   ├── String name
+│   ├── double needed
+│   ├── double funded
+│   └── LocalDate eventDate
+│
+├── Static Variables
+│   ├── double weeklyAllowance
+│   ├── double weeklySpent
+│   ├── double storedMoney
+│   ├── List<Transaction> tx
+│   ├── List<Event> events
+│   ├── Mode mode (enum)
+│   ├── DayOfWeek resetDay
+│   └── LocalDate lastReset
+│
+└── Static Methods
+    ├── Main program flow methods (main(), settingsMenu(), eventsMenu())
+    ├── Budget calculation methods (dailyBudget(), weeklyRemaining())
+    ├── Data management methods (saveData(), loadData())
+    ├── UI methods (printCentered(), header(), subHeader())
+    └── Helper methods (readInt(), readDouble())
 
-### Key Methods:
-- Program flow: `main()`, `settingsMenu()`, `eventsMenu()`
-- Budget calculations: `dailyBudget()`, `weeklyRemaining()`
-- Data management: `saveData()`, `loadData()`
-- UI helpers: `printCentered()`, `header()`, `subHeader()`
-- Input helpers: `readInt()`, `readDouble()`
+```
 
 ------------------------------------------------------------------------
 
@@ -176,16 +204,55 @@ A `data.txt` file is automatically created.
 
 ### **Daily Budget Formula**
 
-  ------------------------------------------------------------------------
-  Mode                    Formula                     Description
-  ----------------------- --------------------------- --------------------
-  Conservative            Allowance / 10              Very safe, saves
-                                                      more money.
+| Mode          | Formula          | Description                 |
+|--------------|------------------|-----------------------------|
+| Conservative | Allowance / 10   | Very safe, saves more money |
+| Balanced     | Allowance / 7    | Even distribution           |
+| Relaxed      | Allowance / 5    | Higher daily cap            |
 
-  Balanced                Allowance / 7               Even distribution
-                                                      across the week.
+------------------------------------------------------------------------
 
-  Relaxed                 Allowance / 5               Higher daily cap.
-  ------------------------------------------------------------------------
+## Authors
+
+<table>
+<tr>
+    <th> &nbsp; </th>
+    <th> Name </th>
+    <th> Role </th>
+</tr>
+<tr>
+    <td><img src="static/eboraj.png" width="100" height="100"> </td>
+    <td><strong>Ebora, Justin Miguel</strong> <br/>
+        </a>
+    </td>
+    <td>Developer</td>
+</tr>
+<tr>
+    <td><img src="static/avnmsgn.png" width="100" height="100"> </td>
+    <td><strong>Marasigan, Arvin Christlan</strong> <br/>
+        </a>
+    </td>
+    <td>Developer</td>
+</tr>
+<tr>
+    <td><img src="static/test.jpg" width="100" height="100"> </td>
+    <td><strong>Pilapil, Florence</strong> <br/>
+        </a>
+    </td>
+    <td>Developer</td>
+  <tr>
+    <td><img src="static/test.jpg" width="100" height="100"> </td>
+    <td><strong>Rocio, Neil Dominic</strong> <br/>
+        </a>
+    </td>
+    <td>Developer</td>
+</tr>
+</table>
+
+------------------------------------------------------------------------
+
+# Acknowledgement
+
+We sincerely express our gratitude to our instructor for the guidance and support provided throughout the completion of this project. We also extend our appreciation to our classmates and peers for their cooperation and encouragement during the development process.
 
 ------------------------------------------------------------------------
