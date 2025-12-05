@@ -65,3 +65,9 @@ Both `Transaction` and `Event` override abstract methods to provide type-specifi
 - **Data Persistence**: Automatic text file storage
 - **Saving Simulation**: Goal planning with daily recommendations
 - **Menu Navigation**: Hierarchical interface system
+
+## Authors
+- **Ebora, Justin**
+- **Pilapial, Florence**
+- **Marasigan, Arvin**
+- **Rocio, Neil**
