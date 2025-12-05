@@ -6,6 +6,50 @@ store extra cash, and save towards specific financial goals using smart
 budgeting algorithms.
 
 ------------------------------------------------------------------------
+## Project Overview
+A Java-based console application designed to help users manage their weekly budget, track daily expenses, and save for future goals or events. The app provides structured budget allocation, spending monitoring, and goal planning with different spending modes and customizable weekly reset days. Data persistence is achieved through text file storage.
+
+------------------------------------------------------------------------
+
+## OOP Concepts Applied
+
+### Abstraction
+The `FinancialItem` abstract class defines a common interface for `Transaction` and `Event` classes, exposing essential methods like `getType()` and `getDisplayInfo()` while hiding implementation details.
+
+### Inheritance
+`Transaction` and `Event` classes extend `FinancialItem`, inheriting common attributes (name, amount, date) while adding specific properties and methods.
+
+### Encapsulation
+All class fields are private/protected with public getter methods. The `Event` class encapsulates funding logic with methods like `addFunds()` and `getRemaining()`.
+
+### Polymorphism
+Both `Transaction` and `Event` override abstract methods to provide type-specific behavior, allowing polymorphic handling through `FinancialItem` references.
+
+------------------------------------------------------------------------
+
+## Program Structure
+
+**Main Class**: `SmartPiggyBankApp_copy`
+
+### Components:
+- **Scanner sc (static)**: Handles user input
+- **Transaction class (static nested)**: 
+  - Attributes: `name`, `amount`, `expense`, `date`
+- **Event class (static nested)**:
+  - Attributes: `name`, `needed`, `funded`, `eventDate`
+- **Static Variables**:
+  - `weeklyAllowance`, `weeklySpent`, `storedMoney`
+  - `List<Transaction> tx`, `List<Event> events`
+  - `Mode mode`, `DayOfWeek resetDay`, `LocalDate lastReset`
+
+### Key Methods:
+- Program flow: `main()`, `settingsMenu()`, `eventsMenu()`
+- Budget calculations: `dailyBudget()`, `weeklyRemaining()`
+- Data management: `saveData()`, `loadData()`
+- UI helpers: `printCentered()`, `header()`, `subHeader()`
+- Input helpers: `readInt()`, `readDouble()`
+
+------------------------------------------------------------------------
 
 ## 🚀 Features
 
