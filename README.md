@@ -241,7 +241,7 @@ A `data.txt` file is automatically created.
     </td>
     <td>Developer</td>
   <tr>
-    <td><img src="static/test.jpg" width="100" height="100"> </td>
+    <td><img src="static/neil.jpg" width="100" height="100"> </td>
     <td><strong>Rocio, Neil Dominic</strong> <br/>
         </a>
     </td>
