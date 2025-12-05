@@ -49,7 +49,7 @@ All user data is saved in a text file, making it a simple yet effective tool for
 - **Java Development Kit (JDK) 8 or higher**
 
 ### Steps
-1. Download the source code file (`SmartPiggyBankApp_copy.java`)
+1. Download the source code file (`SmartPiggyBankApp.java`)
 2. Open a terminal/command prompt in the directory containing the file
 3. Compile the Java file:
    ```bash
