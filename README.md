@@ -1,56 +1,67 @@
-# 🐷 Smart Piggy Bank App  
+# Smart Piggy Bank App
 
-A Java-based console application designed to help users manage their weekly budget, track daily expenses, and save for future goals or events.
+## Table of Contents
+- [Project Overview](#project-overview)
+- [OOP Concepts Applied](#oop-concepts-applied)
+- [Program Structure](#program-structure)
+- [How to Run](#how-to-run)
+- [Features](#features)
+- [Sample Output](#sample-output)
+- [Authors](#authors)
+- [Acknowledgement](#acknowledgement)
 
----
+## Project Overview
+A Java-based console application designed to help users manage their weekly budget, track daily expenses, and save for future goals or events. The app provides structured budget allocation, spending monitoring, and goal planning with different spending modes and customizable weekly reset days. Data persistence is achieved through text file storage.
 
-## 📋 Project Overview  
-The **Smart Piggy Bank App** provides a structured way to:  
-- Allocate a weekly allowance  
-- Monitor spending against a daily budget  
-- Plan savings for specific goals  
-- Choose from different spending modes (*Conservative, Balanced, Relaxed*)  
-- Set a custom weekly reset day  
+## OOP Concepts Applied
 
-All user data is saved in a text file, making it a simple yet effective tool for personal finance management.
+### Abstraction
+The `FinancialItem` abstract class defines a common interface for `Transaction` and `Event` classes, exposing essential methods like `getType()` and `getDisplayInfo()` while hiding implementation details.
 
----
+### Inheritance
+`Transaction` and `Event` classes extend `FinancialItem`, inheriting common attributes (name, amount, date) while adding specific properties and methods.
 
-## 🧠 OOP Concepts Applied  
+### Encapsulation
+All class fields are private/protected with public getter methods. The `Event` class encapsulates funding logic with methods like `addFunds()` and `getRemaining()`.
 
-| Concept         | Implementation                                                                 |
-|-----------------|-------------------------------------------------------------------------------|
-| **Abstraction**  | `FinancialItem` abstract class defines common interface for `Transaction` and `Event`. |
-| **Inheritance**  | `Transaction` and `Event` extend `FinancialItem`, inheriting common attributes. |
-| **Encapsulation** | All class fields are private/protected with public getters; internal state is safely managed. |
-| **Polymorphism** | Overridden methods `getType()` and `getDisplayInfo()` allow type-specific behavior. |
+### Polymorphism
+Both `Transaction` and `Event` override abstract methods to provide type-specific behavior, allowing polymorphic handling through `FinancialItem` references.
 
----
+## Program Structure
 
-## 🗂️ Program Structure  
+**Main Class**: `SmartPiggyBankApp_copy`
 
-**Main Class:** `SmartPiggyBankApp_copy`  
-- Handles user input via `Scanner`  
-- Contains static nested classes: `Transaction` and `Event`  
-- Manages weekly allowance, spending, stored money, and lists of transactions/events  
-- Uses enums for `Mode` and `DayOfWeek` for reset day  
+### Components:
+- **Scanner sc (static)**: Handles user input
+- **Transaction class (static nested)**: 
+  - Attributes: `name`, `amount`, `expense`, `date`
+- **Event class (static nested)**:
+  - Attributes: `name`, `needed`, `funded`, `eventDate`
+- **Static Variables**:
+  - `weeklyAllowance`, `weeklySpent`, `storedMoney`
+  - `List<Transaction> tx`, `List<Event> events`
+  - `Mode mode`, `DayOfWeek resetDay`, `LocalDate lastReset`
 
-**Key Static Methods:**  
-- `main()`, `settingsMenu()`, `eventsMenu()`  
-- `dailyBudget()`, `weeklyRemaining()`  
-- `saveData()`, `loadData()`  
-- UI helpers: `printCentered()`, `header()`, `subHeader()`  
+### Key Methods:
+- Program flow: `main()`, `settingsMenu()`, `eventsMenu()`
+- Budget calculations: `dailyBudget()`, `weeklyRemaining()`
+- Data management: `saveData()`, `loadData()`
+- UI helpers: `printCentered()`, `header()`, `subHeader()`
+- Input helpers: `readInt()`, `readDouble()`
 
----
+## How to Run
+1. Ensure Java Development Kit (JDK) 8+ is installed
+2. Copy the program content into a Java compiler/IDE
+3. Compile and run the `SmartPiggyBankApp_copy` class
 
-## 🚀 How to Run  
+## Features
+- **Financial Management**: Weekly allowance tracking and allocation
+- **Transaction System**: Income/expense recording with categorization
+- **Goals/Events System**: Targeted savings for specific dates
+- **Budgeting Modes**: Conservative, Balanced, or Relaxed spending styles
+- **Weekly Management**: Customizable reset day selection
 
-### Prerequisites
-- **Java Development Kit (JDK) 8 or higher**
 
-### Steps
-1. Download the source code file (`SmartPiggyBankApp.java`)
-2. Open a terminal/command prompt in the directory containing the file
-3. Compile the Java file:
-   ```bash
-   javac SmartPiggyBankApp_copy.java
+- **Data Persistence**: Automatic text file storage
+- **Saving Simulation**: Goal planning with daily recommendations
+- **Menu Navigation**: Hierarchical interface system
